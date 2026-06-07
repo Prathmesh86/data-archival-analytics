@@ -12,3 +12,13 @@ export const pool = new Pool({
     rejectUnauthorized: false,
   },
 });
+
+export const testConnection = async () => {
+  try {
+    await pool.query("SELECT 1");
+    console.log("PostgreSQL connected successfully");
+  } catch (error) {
+    console.error("Failed to connect PostgreSQL:", error.message);
+    process.exit(1);
+  }
+};
